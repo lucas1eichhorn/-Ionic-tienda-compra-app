@@ -1,0 +1,24 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Buscar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <ion-searchbar (ionInput)="_ps.buscar_producto($event)"></ion-searchbar>
+  
+
+    <ion-grid>
+      <ion-row *ngFor="let item of this._ps.items_busqueda">
+        <ion-col [navParams]="{producto:item}" [navPush]="productoPage">
+          <img src="{{item.codigo|imagen}}">
+          <p>{{item.producto}}</p>
+          <br>
+          {{item.precio_compra|currency:'USD':true}}
+        </ion-col>
+  
+      </ion-row>
+    </ion-grid>
+
+</ion-content>
